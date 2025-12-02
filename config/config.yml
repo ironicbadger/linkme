@@ -21,21 +21,6 @@ background:
 # icon: Simple Icons slug (see https://simpleicons.org)
 # color: hex color for button background
 links:
-  - title: "YouTube: KTZ Systems"
-    url: "https://www.youtube.com/@ktzsystems"
-    icon: "youtube"
-    color: "#dc2626"
-
-  - title: "YouTube: Tailscale"
-    url: "https://www.youtube.com/@tailscale"
-    iconUrl: "assets/icons/tailscale.png"
-    color: "#242424"
-
-  - title: "GitHub: Ironicbadger"
-    url: "https://github.com/IronicBadger"
-    icon: "github"
-    color: "#0a0a0a"
-
   - title: "blog.ktz.me"
     url: "https://blog.ktz.me"
     icon: "rss"
@@ -45,6 +30,21 @@ links:
     url: "https://perfectmediaserver.com"
     iconUrl: "assets/icons/pms.png"
     color: "#3B82F6"
+
+  - title: "GitHub: Ironicbadger"
+    url: "https://github.com/IronicBadger"
+    icon: "github"
+    color: "#0a0a0a"
+
+  - title: "YouTube: KTZ Systems"
+    url: "https://www.youtube.com/@ktzsystems"
+    icon: "youtube"
+    color: "#dc2626"
+
+  - title: "YouTube: Tailscale"
+    url: "https://www.youtube.com/@tailscale"
+    iconUrl: "assets/icons/tailscale.png"
+    color: "#242424"
 
   - title: "YouTube: Personal Stuff"
     url: "https://www.youtube.com/@alexkretzschmar"
