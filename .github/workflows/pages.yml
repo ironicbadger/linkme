@@ -20,7 +20,7 @@ defaults:
     shell: bash
 env:
   GO_VERSION: 1.25
-  BASE_URL: "https://test.hudater.dev"
+  BASE_URL: "https://CHANGEME.EXAMPLE"
 
 jobs:
   build:
