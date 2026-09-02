@@ -79,7 +79,14 @@ func (g *Generator) Generate() error {
 
 	// Load and execute template
 	tmplPath := filepath.Join(g.themePath, "template.html")
-	tmpl, err := template.ParseFiles(tmplPath)
+	analyticsPath := filepath.Join(filepath.Dir(g.themePath), "analytics.html")
+	templateFiles := []string{tmplPath}
+	if _, err := os.Stat(analyticsPath); err == nil {
+		templateFiles = append(templateFiles, analyticsPath)
+	} else if !os.IsNotExist(err) {
+		return fmt.Errorf("failed to inspect analytics template: %w", err)
+	}
+	tmpl, err := template.ParseFiles(templateFiles...)
 	if err != nil {
 		return fmt.Errorf("failed to parse template: %w", err)
 	}

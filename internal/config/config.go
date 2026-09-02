@@ -3,6 +3,7 @@ package config
 import (
 	"fmt"
 	"os"
+	"strings"
 
 	"gopkg.in/yaml.v3"
 )
@@ -26,6 +27,8 @@ type Analytics struct {
 	Google      *GoogleAnalytics `yaml:"google"`
 	GoatCounter *GoatCounter     `yaml:"goatcounter"`
 	Plausible   *Plausible       `yaml:"plausible"`
+	Umami       *Umami           `yaml:"umami"`
+	Matomo      *Matomo          `yaml:"matomo"`
 }
 
 type GoogleAnalytics struct {
@@ -40,6 +43,23 @@ type GoatCounter struct {
 type Plausible struct {
 	Domain    string `yaml:"domain"`
 	ScriptURL string `yaml:"script_url"`
+}
+
+type Umami struct {
+	WebsiteID         string `yaml:"website_id"`
+	ScriptURL         string `yaml:"script_url"`
+	HostURL           string `yaml:"host_url"`
+	RespectDoNotTrack bool   `yaml:"respect_do_not_track"`
+}
+
+type Matomo struct {
+	URL            string `yaml:"url"`
+	SiteID         string `yaml:"site_id"`
+	DisableCookies bool   `yaml:"disable_cookies"`
+}
+
+func (m *Matomo) BaseURL() string {
+	return strings.TrimRight(strings.TrimSpace(m.URL), "/") + "/"
 }
 
 type Background struct {

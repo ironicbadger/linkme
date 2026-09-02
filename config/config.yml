@@ -19,6 +19,15 @@ analytics:
   plausible:
     domain: "" # tracked site
     script_url: ""
+  umami:
+    website_id: ""
+    script_url: "" # e.g. https://cloud.umami.is/script.js
+    host_url: "" # optional alternate collection endpoint
+    respect_do_not_track: true
+  matomo:
+    url: "" # base URL of your Matomo instance
+    site_id: ""
+    disable_cookies: true
 
 # Theme selection
 theme: "default"

@@ -1,0 +1,72 @@
+{{define "linkme-analytics"}}
+{{with .Analytics}}
+    {{/* GoatCounter */}}
+    {{with .GoatCounter}}
+    {{if .ID}}
+    {{if .Selfhosted}}
+    <script data-goatcounter="https://{{.ID}}/count" async src="//gc.zgo.at/count.js"></script>
+    {{else}}
+    <script data-goatcounter="https://{{.ID}}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    {{end}}
+    {{end}}
+    {{end}}
+
+    {{/* Plausible */}}
+    {{with .Plausible}}
+    {{if .Domain}}
+    {{if .ScriptURL}}
+    <script defer data-domain="{{.Domain}}" src="{{.ScriptURL}}"></script>
+    {{else}}
+    <script defer data-domain="{{.Domain}}" src="https://plausible.io/js/script.js"></script>
+    {{end}}
+    {{end}}
+    {{end}}
+
+    {{/* Google Analytics */}}
+    {{with .Google}}
+    {{if .ID}}
+    <script defer src="https://www.googletagmanager.com/gtag/js?id={{.ID}}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', '{{.ID}}');
+        });
+    </script>
+    {{end}}
+    {{end}}
+
+    {{/* Umami */}}
+    {{with .Umami}}
+    {{if and .WebsiteID .ScriptURL}}
+    <script defer src="{{.ScriptURL}}" data-website-id="{{.WebsiteID}}"{{with .HostURL}} data-host-url="{{.}}"{{end}}{{if .RespectDoNotTrack}} data-do-not-track="true"{{end}}></script>
+    {{end}}
+    {{end}}
+
+    {{/* Matomo */}}
+    {{with .Matomo}}
+    {{if and .URL .SiteID}}
+    <script>
+        var _paq = window._paq = window._paq || [];
+        {{if .DisableCookies}}_paq.push(['disableCookies']);{{end}}
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u = "{{.BaseURL}}";
+            _paq.push(['setTrackerUrl', u + 'matomo.php']);
+            _paq.push(['setSiteId', '{{.SiteID}}']);
+            var d = document;
+            var g = d.createElement('script');
+            var s = d.getElementsByTagName('script')[0];
+            g.async = true;
+            g.src = u + 'matomo.js';
+            s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+    {{end}}
+    {{end}}
+{{end}}
+{{end}}
