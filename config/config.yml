@@ -30,7 +30,7 @@ background:
   value: "#1e1f26"
 
 # Main links (large buttons)
-# icon: Simple Icons slug (see https://simpleicons.org)
+# icon: Simple Icons slug by default, or a Lucide icon name with icon-provider: "lucide"
 # color: hex color for button background
 links:
   - title: "YouTube: KTZ Systems"
@@ -41,6 +41,7 @@ links:
   - title: "blog.ktz.me"
     url: "https://blog.ktz.me"
     icon: "rss"
+    icon-provider: "lucide"
     color: "#404040"
 
   - title: "Perfect Media Server"

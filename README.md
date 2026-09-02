@@ -24,6 +24,24 @@ docker run -d -p 8080:80 ghcr.io/ironicbadger/linkme:latest
 
 Edit `config/config.yaml` to customize your links and appearance.
 
+### Icons
+
+Link and social icons use [Simple Icons](https://simpleicons.org/) by default. Set
+`icon-provider: "lucide"` to use a generic [Lucide](https://lucide.dev/icons/)
+icon instead:
+
+```yaml
+links:
+  - title: "My blog"
+    url: "https://example.com"
+    icon: "rss"
+    icon-provider: "lucide"
+    color: "#404040"
+```
+
+An omitted or empty provider selects Simple Icons. Unknown providers and icon
+names render a placeholder.
+
 ### Analytics
 
 Supported: Google Analytics, GoatCounter, and Plausible.

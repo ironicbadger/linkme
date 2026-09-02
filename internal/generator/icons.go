@@ -4,6 +4,8 @@ import (
 	"embed"
 	"encoding/json"
 	"strings"
+
+	"github.com/kaugesaar/lucide-go"
 )
 
 //go:embed icons.json
@@ -34,8 +36,46 @@ func init() {
 
 	iconsData = make(map[string]IconData)
 	for _, icon := range icons {
-		iconsData[icon.Slug] = icon
+		// to avoid slug mismatch when looking up in simpleicons
+		iconsData[strings.ToLower(icon.Slug)] = icon
 	}
+}
+
+const placeholderSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>`
+
+func GetIconSVG(iconName, provider string) string {
+	iconName = normalizeSlug(iconName)
+	iconProvider := strings.TrimSpace(strings.ToLower(provider))
+
+	switch iconProvider {
+	case "", "simpleicon":
+		return GetSimpleIcon(iconName)
+
+	case "lucide":
+		return getLucideIconSVG(iconName)
+
+	default:
+		return placeholderSVG
+	}
+}
+
+func normalizeSlug(slug string) string {
+	return strings.ToLower(strings.TrimSpace(slug))
+}
+
+func getLucideIconSVG(slug string) string {
+	icon := lucide.Icon(slug, map[string]any{
+		"size":        24,
+		"strokeWidth": 2,
+		"color":       "currentColor",
+	})
+
+	// lucide.Icon returns template.HTML
+	if icon == "" {
+		return placeholderSVG
+	}
+
+	return string(icon)
 }
 
 // GetSimpleIcon returns an SVG string for the given icon slug
@@ -44,7 +84,7 @@ func GetSimpleIcon(slug string) string {
 	icon, ok := iconsData[slug]
 	if !ok {
 		// Return a placeholder circle if icon not found
-		return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>`
+		return placeholderSVG
 	}
 
 	return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="` + icon.Path + `"/></svg>`

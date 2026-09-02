@@ -13,13 +13,13 @@ type Config struct {
 	Subtitle      string     `yaml:"subtitle"`
 	Description   string     `yaml:"description"`
 	Avatar        string     `yaml:"avatar"`
-	Favicon        string     `yaml:"favicon"`
+	Favicon       string     `yaml:"favicon"`
 	Theme         string     `yaml:"theme"`
 	Background    Background `yaml:"background"`
 	Links         []Link     `yaml:"links"`
 	Sections      []Section  `yaml:"sections"`
 	Socials       []Social   `yaml:"socials"`
-	Analytics     Analytics `yaml:"analytics"`
+	Analytics     Analytics  `yaml:"analytics"`
 }
 
 type Analytics struct {
@@ -33,8 +33,8 @@ type GoogleAnalytics struct {
 }
 
 type GoatCounter struct {
-	ID          string `yaml:"id"`
-	Selfhosted  bool   `yaml:"selfhosted"`
+	ID         string `yaml:"id"`
+	Selfhosted bool   `yaml:"selfhosted"`
 }
 
 type Plausible struct {
@@ -50,11 +50,12 @@ type Background struct {
 }
 
 type Link struct {
-	Title   string `yaml:"title"`
-	URL     string `yaml:"url"`
-	Icon    string `yaml:"icon"`    // Simple Icons slug
-	IconURL string `yaml:"iconUrl"` // Custom icon URL (overrides icon)
-	Color   string `yaml:"color"`   // hex color for button
+	Title        string `yaml:"title"`
+	URL          string `yaml:"url"`
+	Icon         string `yaml:"icon"`          // Simple Icons slug
+	IconURL      string `yaml:"iconUrl"`       // Custom icon URL (overrides icon)
+	IconProvider string `yaml:"icon-provider"` // simpleicon (default) or lucide
+	Color        string `yaml:"color"`         // hex color for button
 }
 
 type Section struct {
@@ -63,9 +64,10 @@ type Section struct {
 }
 
 type Social struct {
-	Icon  string `yaml:"icon"`  // Simple Icons slug
-	URL   string `yaml:"url"`
-	Color string `yaml:"color"` // hex color for icon
+	Icon         string `yaml:"icon"`          // Simple Icons slug
+	IconProvider string `yaml:"icon-provider"` // simpleicon (default) or lucide
+	URL          string `yaml:"url"`
+	Color        string `yaml:"color"` // hex color for icon
 }
 
 func Load(path string) (*Config, error) {

@@ -134,7 +134,7 @@ func (g *Generator) prepareTemplateData() *TemplateData {
 		data.Links = append(data.Links, LinkData{
 			Title:   link.Title,
 			URL:     link.URL,
-			IconSVG: template.HTML(GetSimpleIcon(link.Icon)),
+			IconSVG: template.HTML(GetIconSVG(link.Icon, link.IconProvider)),
 			IconURL: link.IconURL,
 			Color:   link.Color,
 		})
@@ -149,7 +149,7 @@ func (g *Generator) prepareTemplateData() *TemplateData {
 			sectionData.Links = append(sectionData.Links, LinkData{
 				Title:   link.Title,
 				URL:     link.URL,
-				IconSVG: template.HTML(GetSimpleIcon(link.Icon)),
+				IconSVG: template.HTML(GetIconSVG(link.Icon, link.IconProvider)),
 				IconURL: link.IconURL,
 				Color:   link.Color,
 			})
@@ -161,7 +161,7 @@ func (g *Generator) prepareTemplateData() *TemplateData {
 	for _, social := range g.cfg.Socials {
 		data.Socials = append(data.Socials, SocialData{
 			URL:     social.URL,
-			IconSVG: template.HTML(GetSimpleIcon(social.Icon)),
+			IconSVG: template.HTML(GetIconSVG(social.Icon, social.IconProvider)),
 			Color:   social.Color,
 		})
 	}
