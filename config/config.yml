@@ -63,10 +63,10 @@ links:
     icon: "github"
     color: "#0a0a0a"
 
-  - title: "YouTube: Personal Stuff"
-    url: "https://www.youtube.com/@alexkretzschmar"
-    icon: "youtube"
-    color: "#dc2626"
+  - title: "Bitflip Podcast"
+    url: "https://bitflip.show"
+    iconUrl: "assets/icons/bitflip.png"
+    color: "#ee7125"
 
 # Sections with headings
 sections:
