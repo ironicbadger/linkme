@@ -9,48 +9,7 @@
     <link rel="icon" type="image/png" href="{{.Config.Favicon}}">
     {{end}}
 
-    {{/* Analytics */}}
-    {{/* GoatCounter */}}
-    {{/* with avoids nil dereference which results in panic */}}
-    {{ with .Analytics.GoatCounter }}
-    {{ if .ID }}
-    {{ if .Selfhosted }}
-    <script data-goatcounter="https://{{ .ID }}/count" async src="//gc.zgo.at/count.js">
-    </script>
-    {{ else }}
-    <script data-goatcounter="https://{{ .ID }}.goatcounter.com/count" async src="//gc.zgo.at/count.js">
-    </script>
-    {{ end }}
-    {{ end }}
-    {{ end }}
-
-    {{/* Plausible analytics */}}
-    {{ with .Analytics.Plausible }}
-    {{ if .Domain }}
-    {{ if .ScriptURL }}
-    <script defer data-domain="{{ .Domain }}" src="{{ .ScriptURL }}"></script>
-    {{ else }}
-    <script defer data-domain="{{ .Domain }}" src="https://plausible.io/js/script.js"></script>
-    {{ end }}
-    {{ end }}
-    {{ end }}
-
-    {{/* Google analytics */}}
-    {{ with .Analytics.Google }}
-    {{ if .ID }}
-    <script defer src="https://www.googletagmanager.com/gtag/js?id={{ .ID }}"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-        dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', '{{ .ID }}');
-    });
-    </script>
-    {{ end }}
-    {{ end }}
+    {{template "linkme-analytics" .}}
 
     {{/* Theme stylesheets */}}
     {{range .ThemeStyles}}

@@ -7,6 +7,8 @@
     <meta name="description" content="{{.Config.Description}}">
     <link rel="icon" type="image/png" href="assets/favicon.png">
 
+    {{template "linkme-analytics" .}}
+
     {{/* Theme stylesheets */}}
     {{range .ThemeStyles}}
     <link rel="stylesheet" href="{{.}}?v={{$.AssetVersion}}">
