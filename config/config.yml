@@ -52,6 +52,11 @@ links:
     iconUrl: "assets/icons/bitflip.png"
     color: "#ee7125"
 
+  - title: "GitHub: Ironicbadger"
+    url: "https://github.com/IronicBadger"
+    icon: "github"
+    color: "#0a0a0a"
+
   - title: "blog.ktz.me"
     url: "https://blog.ktz.me"
     icon: "rss"
@@ -62,11 +67,6 @@ links:
     url: "https://perfectmediaserver.com"
     iconUrl: "assets/icons/pms.png"
     color: "#3B82F6"
-
-  - title: "GitHub: Ironicbadger"
-    url: "https://github.com/IronicBadger"
-    icon: "github"
-    color: "#0a0a0a"
 
 # Sections with headings
 sections:
